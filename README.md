@@ -71,6 +71,8 @@ The structure is as follows:
             ├── fullSeries_particleMesh.obj
             └── translated_particleMesh.obj
 ```
+The particle repository can be stored anywhere and contains the particles, which should be named by the `CaptureImages.py` script as a timestamp when the images were created.
+A folder at the same level named `RescannedGrains` should store the rescanned version of the same particle, allowing for consistent name convention to be used.
 
 ## Sample Usage
 Initially, collect images using the `CaptureImages.py` script, changing the serial connection and camera information to suit (Harvesters requires an appropriate GenTL producer).
@@ -89,3 +91,4 @@ Finally, use `Virtualization.extrude_rotate` to create the reconstructed volume 
 
 Each of these functions simply uses a path to the particle folder as a string, allowing for multiple operations to be chained together with ease.
 
+To realign the meshes for direct comparison, use the `meshRelignment.py` script to create a `translated_particleMesh.obj` mesh in the RescannedGrains version of the particle.
