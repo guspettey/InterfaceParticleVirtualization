@@ -335,7 +335,7 @@ def realign_rescanned(path_str,crop_search_area=False):
     Path((folderPath/'rescaled_corr')).mkdir(parents=True,exist_ok=True)
 
     preImgList = sorted([x for x in (folderPath/'rescaled_corr').glob('*.tif*') if x.is_file()])
-    postImgList = sorted([x for x in (rescannedPath/'cropped_corr').glob('*.tif*') if x.is_file()])
+    postImgList = sorted([x for x in (rescannedPath/'rescaled_corr').glob('*.tif*') if x.is_file()])
     image_name_list = [x.stem for x in preImgList]
     
     preImgShape = cv2.imread(str(preImgList[0]),0).shape
@@ -351,7 +351,7 @@ def realign_rescanned(path_str,crop_search_area=False):
         print('Scaling on {}\n'.format(angle.name),flush=True,end='\r')
 
         preImg = plt.imread(folderPath/'rescaled_corr'/angle.name)
-        postImg = plt.imread(str(rescannedPath/'cropped_corr'/angle.name))
+        postImg = plt.imread(str(rescannedPath/'rescaled_corr'/angle.name))
 
         if crop_search_area==True:
             padding = 250
